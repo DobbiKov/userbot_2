@@ -12,6 +12,7 @@ from modules.reply import reply_filter, reply_handler
 from modules.ids_command import ids_command_filter, ids_command_handler
 
 from globals import app
+from modules.thanks_handler import thanks_filter, thanks_handler
 from modules.voice_to_text import two_text_filter, two_text_handler
     
 app.add_handler(MessageHandler(reply_handler, (reply_filter)))
@@ -19,6 +20,7 @@ app.add_handler(MessageHandler(ids_command_handler, (ids_command_filter)))
 app.add_handler(MessageHandler(qrcode_handler, (filters.text & qrcode_command_filter)))
 app.add_handler(MessageHandler(chosen_chats_handler, (chosen_chats_filter)))
 app.add_handler(MessageHandler(two_text_handler, (two_text_filter)))
+app.add_handler(MessageHandler(thanks_handler, (thanks_filter)))
 
 if __name__ == "__main__":
     app.run()
