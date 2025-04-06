@@ -22,7 +22,7 @@ def does_text_contains_thanks(mess: str) -> Optional[str]:
     return None
 
 async def thanks_filter_func(fliter, user: User, message: Message):
-    return does_text_contains_thanks(message.text.lower()) is not None
+    return does_text_contains_thanks(message.text.lower()) is not None and message.chat.id >= 0 and message.chat.id != 716720991
 
 thanks_filter: filters.Filter = filters.create(thanks_filter_func)
 
@@ -31,6 +31,6 @@ async def thanks_handler(client: Client, message: Message):
     if lang is None:
         return print("No language found")
     
-    if message.chat.id != message.from_user.id:
-        return
+    if message.chat.id < 0:
+        return 
     await message.react("❤️")
