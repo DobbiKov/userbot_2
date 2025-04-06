@@ -22,7 +22,7 @@ def does_text_contains_thanks(mess: str) -> Optional[str]:
     return None
 
 async def thanks_filter_func(fliter, user: User, message: Message):
-    return does_text_contains_thanks(message.text.lower()) is not None and message.chat.id >= 0 and message.chat.id != 716720991
+    return does_text_contains_thanks(message.text.lower()) is not None and message.chat.id >= 0 and message.from_user.id != 716720991
 
 thanks_filter: filters.Filter = filters.create(thanks_filter_func)
 
