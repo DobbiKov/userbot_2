@@ -40,7 +40,7 @@ def transcribe_from_file(path: str) -> str:
     myfile = client.files.upload(file=path)
 
     response = client.models.generate_content(
-      model='gemini-2.0-flash',
+      model='gemini-2.5-flash',
       contents=['Give me the complete transcript of the audio message (in the case if you understand that there\'s only one speaker). If there\'s more than one speaker, write the transcript in the format:\
               Speaker 1: ...\
               Speaker 2: ...\
